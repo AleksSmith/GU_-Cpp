@@ -34,7 +34,7 @@ int main(int argc, char const *argv[])
     cout << "Enter second number: ";
     cin >> b;
     
-    if(((a+b)>10) && ((a+b)< 20))
+    if(((a+b)>=10) && ((a+b)<= 20))
         cout << " TRUE " << endl;
     else 
         cout << " FALSE " << endl;
