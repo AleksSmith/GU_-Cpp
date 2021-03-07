@@ -5,13 +5,15 @@
 
 using namespace std;
 
+#define BUF 50
+
 // 1. Написать программу, которая создаст два текстовых файла, примерно по 50-100 символов в каждом
 // (особого значения не имеет);
 
 // 2. Написать функцию, «склеивающую» эти файлы, предварительно буферизуя их содержимое в динамически
 // выделенный сегмент памяти нужного размера.
 
-void copy_second_to_first (string& name1, string& name2){     // Функция добавления данных из второго файла в конец первого
+void copy_second_to_first (int b_size, string& name1, string& name2){     // Функция добавления данных из второго файла в конец первого
     ofstream out (name1,ios_base::app);                         // Открываем поток для записи в файл name1
     if (!out){
         cout << "Невозможно открыть для записи файл :" << name1;
@@ -22,7 +24,7 @@ void copy_second_to_first (string& name1, string& name2){     // Функция 
         cout << "Невозможно открыть для чтения файл :" << name2;
         return;
     } 
-    char *buf = new char[50];                                   // Динамически выделяем память под буфер элементов char размером 50 байт  
+    char *buf = new char[b_size];                                   // Динамически выделяем память под буфер элементов char размером 50 байт  
     if(!buf){
         cout << "Ошибка выделения памяти";
         return;
@@ -70,6 +72,6 @@ int main(int argc, char const *argv[])
         
 
 //  2.
-    copy_second_to_first(name1, name2);
+    copy_second_to_first(BUF,name1, name2);
     return 0;
 }
